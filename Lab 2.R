@@ -42,10 +42,10 @@ panel_model_unbalanced <- lm(log(CO2_pc) ~ poly(log(gdp_pc), 2) + year + Country
 avg_model_balanced <- lm(average_CO2_pc ~ poly(average_gdp_pc, 2), data = time_average_balanced_data)
 avg_model_unbalanced <- lm(average_CO2_pc ~ poly(average_gdp_pc, 2), data = time_average_unbalanced_data)
 
-# balanced avg turning point (in $) -- using coefficients from panel
+# balanced avg turning point (in $) -- using coefficients from time avg
 (-45.734423)/(2 * -16.202700)
 
-# unbalanced avg turning point (in $) -- using coefficients from panel
+# unbalanced avg turning point (in $) -- using coefficients from time avg
 (-52.180275)/(2 * -35.916682)
 
 # balanced panel turning point (in $) -- using coefficients from panel
