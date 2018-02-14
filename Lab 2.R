@@ -56,26 +56,22 @@ exp((-62.89691890)/(2 * -11.53222817))
 
 balanced_summary <- balanced_data %>%
   as.data.frame() %>%
-  select("GDP per Capita (U.S. $)" = gdp_pc,
-         "Carbon Dioxide Emissions (metric tons per capita)" = CO2_pc) %>%
+  select("GDP per Capita (U.S. $)" = gdp_pc, "Carbon Dioxide Emissions (metric tons per capita)" = CO2_pc) %>%
   stargazer(out = "balanced_summary.html")
 
 unbalanced_summary <- unbalanced_data %>%
   as.data.frame() %>%
-  select("GDP per Capita (U.S. $)" = gdp_pc,
-         "Carbon Dioxide Emissions (metric tons per capita)" = CO2_pc) %>%
+  select("GDP per Capita (U.S. $)" = gdp_pc, "Carbon Dioxide Emissions (metric tons per capita)" = CO2_pc) %>%
   stargazer(out = "unbalanced_summary.html")
 
 time_avg_balanced_summary <- time_average_balanced_data %>%
   as.data.frame() %>%
-  select("Average GDP per Capita (U.S. $)" = average_gdp_pc,
-         "Average Carbon Dioxide Emissions (metric tons per capita)" = average_CO2_pc) %>%
+  select("Average GDP per Capita (U.S. $)" = average_gdp_pc, "Average Carbon Dioxide Emissions (metric tons per capita)" = average_CO2_pc) %>%
   stargazer(out = "time_avg_balanced_summary.html")
 
 time_avg_unbalanced_summary <- time_average_unbalanced_data %>%
   as.data.frame() %>%
-  select("Average GDP per Capita (U.S. $)" = average_gdp_pc,
-         "Average Carbon Dioxide Emissions (metric tons per capita)" = average_CO2_pc) %>%
+  select("Average GDP per Capita (U.S. $)" = average_gdp_pc, "Average Carbon Dioxide Emissions (metric tons per capita)" = average_CO2_pc) %>%
   stargazer(out = "time_avg_unbalanced_summary.html")
 
 balanced_scatter <- ggplot(data = time_average_balanced_data) +
@@ -93,9 +89,7 @@ balanced_scatter <- ggplot(data = time_average_balanced_data) +
         legend.title = element_blank(),
         legend.text = element_text(family = "mono", face = "bold", size = 18, margin = margin(1, 1, 1, 100)),
         legend.key.size = unit(1, "cm"),
-        plot.subtitle = element_text(size = 16, face = "bold", 
-                                     family = "mono", hjust = 0.5, 
-                                     margin = margin(0,0,30,0)))
+        plot.subtitle = element_text(size = 16, face = "bold", family = "mono", hjust = 0.5, margin = margin(0,0,30,0)))
 
 
 unbalanced_scatter <- ggplot(data = time_average_unbalanced_data) +
@@ -113,9 +107,7 @@ unbalanced_scatter <- ggplot(data = time_average_unbalanced_data) +
         legend.title = element_blank(),
         legend.text = element_text(family = "mono", face = "bold", size = 18, margin = margin(1, 1, 1, 100)),
         legend.key.size = unit(1, "cm"),
-        plot.subtitle = element_text(size = 16, face = "bold", 
-                                     family = "mono", hjust = 0.5, 
-                                     margin = margin(0,0,30,0)))
+        plot.subtitle = element_text(size = 16, face = "bold", family = "mono", hjust = 0.5, margin = margin(0,0,30,0)))
 
 
 
