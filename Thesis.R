@@ -35,6 +35,8 @@ world_bank_data <- wb(indicator = c("ST.INT.ARVL", "NY.GDP.PCAP.PP.KD", "EN.ATM.
   mutate(country = replace(country, which(country == "Egypt, Arab Rep."), "Egypt")) %>%
   mutate(country = replace(country, which(country == "Cote d'Ivoire"), "Ivory Coast")) %>%
   mutate(country = replace(country, which(country == "Gambia, The"), "The Gambia")) %>%
+  mutate(country = replace(country, which(country == "Timor-Leste"), "East Timor")) %>%
+  mutate(country = replace(country, which(country == "The Gambia"), "Gambia")) %>%
   mutate(country = replace(country, which(country == "Micronesia, Fed. Sts."), "Micronesia"))
 
 url <- c("https://www.happycow.net/north_america/",
@@ -61,11 +63,12 @@ veg_data <- map_df(1:6, get_data) %>%
 
 mydata <- veg_data %>%
   mutate(country = if_else(country %in% c("New South Wales", "Queensland", "Australian Capital Territory", "Northern Territory", "Western Australia", "South Australia", "Tasmania", "Victoria"), "Australia", country)) %>%
+  mutate(country = if_else(country %in% c("Scotland", "England", "Wales", "Northern Ireland"), "United Kingdom", country)) %>%
   group_by(country, region) %>%
   summarize(veg_places = sum(veg_places)) %>%
   ungroup() %>%
   inner_join(world_bank_data, by = "country") %>%
-  mutate(veg_pc = veg_places / population) %>%
+  mutate(veg_pc = (veg_places / population)) %>%
   rename(country_code = iso3c) %>%
   select(-iso2c) %>%
   select(country, country_code, date, veg_pc, veg_places, everything())
